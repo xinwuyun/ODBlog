@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+<h1>此处显示归档页面</h1>
+<h2>需要时间轴</h2>
+<!--<style>
+		body {
+			font-size: 12px;
+		}
+		
+		ul li {
+			list-style: none;
+		}
+		.track-rcol {
+			width: 100%;
+			border: 1px solid #eee;
+		}
+		
+		.track-list {
+			margin: 20px;
+			padding-left: 5px;
+			position: relative;
+		}
+		
+		.track-list li {
+			position: relative;
+			padding: 9px 0 0 25px;
+			line-height: 18px;
+			border-left: 1px solid #d9d9d9;
+			color: #999;
+		}
+		
+		.track-list li.first {
+			color: red;
+			padding-top: 0;
+			border-left-color: #fff;
+		}
+		
+		.track-list li .node-icon {
+			position: absolute;
+			left: -6px;
+			top: 50%;
+			width: 11px;
+			height: 11px;
+			background: url(img/trank.png) -21px -72px no-repeat;
+		}
+		
+		.track-list li.first .node-icon {
+			background-position: 0 -72px;
+		}
+		
+		.track-list li .time {
+			margin-right: 20px;
+			position: relative;
+			top: 4px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.track-list li .txt {
+			position: relative;
+			top: 4px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.track-list li.first .time {
+			margin-right: 20px;
+		}
+		
+		.track-list li.first .txt {
+			max-width: 600px;
+		}
+</style>-->
+<div class="track-list">
+    <ul>
+	{% for blog in blogs %}
+	{% if not blog.get('name')=='about.md' %}
+    <li class="first">
+        <div class="time">
+            {{blog.get('createdDateTime')[:10]}}-{{blog.get('createdDateTime')[11:-1]}}
+            <a href={{ url_for('blog_content', title=blog.get('name')) }} class="node-icon">{{blog.get('name').split('-')[0]}}</a>
+		</div>
+	{% endif %}
+    {% endfor %}
+    </ul>
+</div>
+
+</div>
+{% endblock %}

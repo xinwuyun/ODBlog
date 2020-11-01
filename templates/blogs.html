@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    {% for blog in blogs  %}
+    {% if not blog.get('name')=='about.md' %}
+    
+    <h1><a href={{ url_for('blog_content', title=blog.get('name')) }}>{{blog.get('name').split('-')[0]}}</a></h1>
+    <table width="80%">
+        <tr>
+            <th width="30%">作者：王泽睿</th>
+            <th width="30%">分类：{{blog.get('name').split('-')[1]}}</th>
+            <th width="30%">创建于：{{blog.get('createdDateTime')[:10]}}</th>
+        </tr>
+    </table>
+    <!--
+    <p>作者：王泽睿</p>
+    <p>分类：{{blog.get('name').split('-')[1]}}</p>
+    <p>创建于：{{blog.get('createdDateTime')}}</p>
+    <p>最后编辑于：{{blog.get('lastModifiedDateTime')}}</p>-->
+    
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

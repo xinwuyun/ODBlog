@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+{% if not name %}
+    {% for key,value in categories.items() %}
+        <h3><a href={{url_for('categories', name=key)}}>{{ key }}:{{value|length}}篇</a></h3>
+    {% endfor %}
+{% else %}
+    <p>分类/{{ name }}</p>
+    {% for blog in blogs %}
+    <h1><a href={{ url_for('blog_content', title=blog.get('name')) }}>{{blog.get('name').split('-')[0]}}</a></h1>
+    <table width="80%">
+        <tr>
+            <th width="30%">作者：王泽睿</th>
+            <th width="30%">分类：{{blog.get('name').split('-')[1]}}</th>
+            <th width="30%">创建于：{{blog.get('createdDateTime')[:10]}}</th>
+        </tr>
+    </table>
+    {% endfor %}
+{% endif %}
+</div>
+{% endblock %}

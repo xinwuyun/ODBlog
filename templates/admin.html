@@ -1,0 +1,60 @@
+<h1>admin</h1>
+<h2>主要功能为文件列表程序。可编辑 可创建</h2>
+<div class="list-wrapper" id="list-div">
+    <div class="list-container">
+        <div class="list-header-container">
+            <a href="/" class="back-link">
+                <ion-icon name="arrow-back"></ion-icon>
+            </a>
+            <h3 class="table-header">/<a href="/">blog/{{ path }}</a></h3>
+        </div>
+        <div class="list-body-container">
+            <table class="list-table" id="list-table">
+                <tbody><tr id="tr0">
+                    <th class="file"><a onclick="sortby('a');">文件</a></th>
+                    <th class="created_at" width="25%"><a onclick="sortby('time');">创建时间</a></th>
+                    <th class="last_modified_at" width="25%"><a onclick="sortby('time');">最后修改时间</a></th>
+                </tr>
+                <!-- Dirs -->
+                {% for blog in blogs %}
+                <tr data-to="" id="tr1">
+                    <td class="file">
+                        <ion-icon name="folder"></ion-icon>
+                        <a id="file_a1" name="filelist" href="/">{{blog.get('name')}}</a>
+                    </td>
+                    <td class="created_at" id="folder_time1">{{blog.get('createdDateTime')}}</td>
+                    <td class="last_modified_at" id="folder_time2">{{blog.get('lastModifiedDateTime')}}</td>
+                </tr>
+                {% endfor %}
+            </tbody></table>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1em;color:#000;background-color:#FFF;background-image:url("https://preview.cloud.189.cn/image/imageAction?param=644D1FDF3BCA66793B4EC8743DC719B301697B82B4CF1D65CADA04AE0EDC27272D6F8FAC5BB7C96F9E7B69323C350F5E2B4436C2B61E6C9E6714B04FB2A9F6CEE340D18744E86E16D3FCD63FA6392C05C9BB16ED35833327310E45AB")}
+    a{color:#000;cursor:pointer;text-decoration:none}
+    ion-icon{font-size:15px;vertical-align:bottom}
+    .title{text-align:center;margin-top:1rem;letter-spacing:2px;margin-bottom:2rem}
+    .title a{color:#000;text-decoration:none}
+    .list-wrapper{width:80%;margin:0 auto 30px;position:relative;box-shadow:0 0 32px 0 rgb(222, 220, 220);border-radius:15px;}
+    .list-container{position:relative;overflow:hidden;border-radius:15px;}
+    .list-header-container{position:relative}
+    .list-header-container a.back-link{color:#000;display:inline-block;position:absolute;font-size:16px;margin:20px 10px;padding:10px 10px;vertical-align:middle;text-decoration:none}
+     a.back-link:hover,body{color:#05f7d5}
+    .list-container,.list-header-container,.list-wrapper,body{color:#000}
+    .table-header{margin:0;border:0 none;padding:30px 60px;text-align:left;font-weight:400;color:#000;background-color:rgba(128, 128, 128, 0.4);word-break: break-all;word-wrap: break-word;}
+    .list-body-container{position:relative;left:0;overflow-x:hidden;overflow-y:auto;box-sizing:border-box;background:rgba(128, 128, 128, 0.4)}
+    .list-table{width:100%;padding:0 20px 20px 20px;border-spacing:0}
+    .list-table tr{height:40px}
+    .list-table tr[data-to]:hover{background:rgb(41, 41, 41,0.4);color:#FFF;}
+    .list-table tr[data-to]:hover a[name~="filelist"]{color:#FFF}
+    .list-table tr:first-child{background:rgba(0,0,0,0)}
+    .list-table td,.list-table th{padding:0 10px;text-align:left}
+    .list-table .size,.list-table .created_at .last_modified_at{text-align:right}
+    @media only screen and (max-width:480px){
+        .title{margin-bottom:24px}
+        .list-wrapper{width:95%; margin-bottom:24px;}
+        .list-table {padding:8px}
+        .list-table td, .list-table th{white-space:nowrap;overflow:auto;max-width:80px}
+    }
+</style>
