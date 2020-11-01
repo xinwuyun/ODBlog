@@ -10,10 +10,10 @@
     - 或`![](http://blog.zr.codes/title/image.jpg)`（通用，使用前保证图片已经通过OneDrive同步）
 
 + 视频播放
-    集成`DPlayer`，只需将想插入的视频文件防止博客对应目录，在`md`文件中写一行标签即可
+    集成`DPlayer`，将想插入的视频文件防止博客对应目录，在`md`文件中写一行标签即可
     `<div id="dplayer" src="1.mp4"></div>`
     
-    **[视频图片测试](http://blog.zr.codes/blog/视频测试-project/)**
+    **[视频图片测试](http://blog.zr.codes/blog/视频图片测试-project/)**
 
 # 运行环境
 ## **无服务器运行**
